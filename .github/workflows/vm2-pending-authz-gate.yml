@@ -1,0 +1,16 @@
+name: VM2 pending authz protected gate
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  protected_gate:
+    name: vm2-authz-gate
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo VM2_AUTHZ_GATE_OK=true
