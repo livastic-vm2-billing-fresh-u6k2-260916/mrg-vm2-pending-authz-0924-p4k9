@@ -1,8 +1,17 @@
 queue_rules:
-  - name: default
+  - name: privileged
     queue_conditions:
-      - title = VM2_PENDING_ARM_P4K9
-    merge_conditions: []
+      - label = vm2-nq-priv-0926
+    merge_conditions:
+      - check-success = vm2-nq-never-priv
+    merge_method: merge
+    batch_size: 1
+    batch_max_wait_time: 0 seconds
+  - name: alternate
+    queue_conditions:
+      - title = VM2_NQ_ALT_ARM_0926
+    merge_conditions:
+      - check-success = vm2-nq-never-alt
     merge_method: merge
     batch_size: 1
     batch_max_wait_time: 0 seconds
